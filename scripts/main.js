@@ -54,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function(){
   var bonusScreen = document.createElement("div");
   var header = document.createElement("h1");
   var header2 = document.createElement("h2");
-  var header2 = document.createElement("h2");
   header2.innerHTML = "Congratulations; you have unlocked bonus content!";
   var button = document.createElement("button");
   var bonusButton = document.createElement("button");
@@ -120,13 +119,6 @@ document.addEventListener("DOMContentLoaded", function(){
     tile.className = "tile";
     tile.setAttribute("val", 0);
     createMenu(tile);
-    // if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
-    //   tile.addEventListener('click', function(){
-    //     showMenu(tile);
-    //     return;
-    //   });
-    //   tile.children[0].addEventListener('click', hideMenu);
-    // }
     tile.addEventListener('mouseenter', showMenu);
     tile.addEventListener('mouseleave', hideMenu);
     row.appendChild(tile);
@@ -256,18 +248,24 @@ document.addEventListener("DOMContentLoaded", function(){
     flagSound.play();
     var thisTile = this.parentElement.parentElement;
     if (thisTile.classList.contains("flagged")){
-      thisTile.classList.remove("flagged");
-      this.className = "fa fa-flag";
-      this.parentElement.children[1].className = "fa fa-unlock-alt";
-      this.parentElement.children[1].style.cursor = "pointer";
+      flag(this, thisTile);
     }
     else {
-      thisTile.classList.add("flagged");
-      this.className = "fa fa-flag-o";
-      this.parentElement.children[1].className = "fa fa-lock";
-      this.parentElement.children[1].style.cursor = "default";
+      unflag(this, thisTile);
     }
     checkWon();
+  }
+  function flag(icon, tile){
+    tile.classList.remove("flagged");
+    icon.className = "fa fa-flag";
+    icon.parentElement.children[1].className = "fa fa-unlock-alt";
+    icon.parentElement.children[1].style.cursor = "pointer";
+  }
+  function unflag(icon, tile){
+    tile.classList.add("flagged");
+    icon.className = "fa fa-flag-o";
+    icon.parentElement.children[1].className = "fa fa-lock";
+    icon.parentElement.children[1].style.cursor = "default";
   }
 
   function showAllBombs(){
@@ -296,20 +294,10 @@ document.addEventListener("DOMContentLoaded", function(){
     header.innerHTML = "YOU WON!";
     doneScreen.className = "won";
     if (score == 5){
-      bonusSound.play();
-      doneScreen.removeChild(header);
-      doneScreen.appendChild(header2);
-      doneScreen.removeChild(button);
-      doneScreen.appendChild(bonusButton);
+      bonusWon();
     }
     else {
-      won.play();
-      if (doneScreen.children.contains(header2) && doneScreen.children.contains(bonusButton)){
-        doneScreen.removeChild(header2);
-        doneScreen.removeChild(bonusButton);
-      }
-      doneScreen.appendChild(header);
-      doneScreen.appendChild(button);
+      wonScreen();
     }
     showAllBombs();
     minesweeper.appendChild(doneScreen);
@@ -326,7 +314,22 @@ document.addEventListener("DOMContentLoaded", function(){
     scoreHeader.innerHTML = "Score: " + score;
     document.body.appendChild(scoreHeader);
   }
-
+  function wonScreen(){
+    won.play();
+    if (doneScreen.children.contains(header2) && doneScreen.children.contains(bonusButton)){
+      doneScreen.removeChild(header2);
+      doneScreen.removeChild(bonusButton);
+    }
+    doneScreen.appendChild(header);
+    doneScreen.appendChild(button);
+  }
+  function bonusWon(){
+    bonusSound.play();
+    doneScreen.removeChild(header);
+    doneScreen.appendChild(header2);
+    doneScreen.removeChild(button);
+    doneScreen.appendChild(bonusButton);
+  }
   function bonus(){
     score = 0;
     minesweeper.removeChild(doneScreen);

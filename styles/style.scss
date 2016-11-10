@@ -91,9 +91,9 @@ title {
     }
 
     button {
-      margin: 50% auto 0 auto;
-      height: 60px;
-      width: 180px;
+      margin: 50.5% auto 0 33.2%;
+      height: 53px;
+      width: 173px;
       font-family: 'Iceberg', cursive;
       font-size: 24px;
       cursor: pointer;
@@ -112,6 +112,9 @@ title {
       border: 4px groove black;
       background: linear-gradient(lighten($bc, 20%), darken($bc, 40%));
     }
+    .bonus-button {
+      margin-top: 41.7%;
+    }
   }
 
   .won {
@@ -124,10 +127,6 @@ title {
       line-height: 100%;
       text-shadow: 2px 2px 1px white;
     }
-
-    .bonus-button {
-      margin-top: 41%;
-    }
   }
   .lost {
     background-image: url("../images/explosion.png");
@@ -137,7 +136,8 @@ title {
     background-repeat: no-repeat;
 
     button {
-      margin-top: 78%;
+      margin-top: 79%;
+      height: 55px;
     }
   }
 }

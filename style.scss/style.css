@@ -67,9 +67,9 @@ title {
       font-size: 60px;
       text-shadow: 3px 3px 1px black; }
     #minesweeper .won button, #minesweeper .lost button, #minesweeper .bonus button {
-      margin: 50.5% auto 0 33.2%;
-      height: 53px;
-      width: 173px;
+      margin: 50% auto 0 auto;
+      height: 59.75px;
+      width: 179.25 px;
       font-family: 'Iceberg', cursive;
       font-size: 24px;
       cursor: pointer;
@@ -86,8 +86,6 @@ title {
       text-shadow: 2px 2px 1px black;
       border: 4px groove black;
       background: linear-gradient(#570396, black); }
-    #minesweeper .won .bonus-button, #minesweeper .lost .bonus-button, #minesweeper .bonus .bonus-button {
-      margin-top: 41.7%; }
   #minesweeper .won {
     background-image: url("../images/balloons.svg"); }
     #minesweeper .won h2 {
@@ -96,14 +94,15 @@ title {
       color: #1D0132;
       line-height: 100%;
       text-shadow: 2px 2px 1px white; }
+    #minesweeper .won .bonus-button {
+      margin-top: 41%; }
   #minesweeper .lost {
     background-image: url("../images/explosion.png"); }
   #minesweeper .bonus {
     background-size: contain;
     background-repeat: no-repeat; }
     #minesweeper .bonus button {
-      margin-top: 79%;
-      height: 55px; }
+      margin-top: 78%; }
 
 @media screen and (max-width: 768px) {
   .score-header {
