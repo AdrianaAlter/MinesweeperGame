@@ -120,6 +120,13 @@ document.addEventListener("DOMContentLoaded", function(){
     tile.className = "tile";
     tile.setAttribute("val", 0);
     createMenu(tile);
+    // if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
+    //   tile.addEventListener('click', function(){
+    //     showMenu(tile);
+    //     return;
+    //   });
+    //   tile.children[0].addEventListener('click', hideMenu);
+    // }
     tile.addEventListener('mouseenter', showMenu);
     tile.addEventListener('mouseleave', hideMenu);
     row.appendChild(tile);
@@ -142,10 +149,10 @@ document.addEventListener("DOMContentLoaded", function(){
     var menu = document.createElement("section");
     menu.className = "menu";
     var flagToggle = document.createElement("i");
-    flagToggle.addEventListener("click", toggleFlagged);
     flagToggle.className = "fa fa-flag";
     var revealButton = document.createElement("i");
     revealButton.className = "fa fa-unlock-alt";
+    flagToggle.addEventListener("click", toggleFlagged);
     revealButton.addEventListener("click", handleShow);
     menu.appendChild(flagToggle);
     menu.appendChild(revealButton);
@@ -314,6 +321,7 @@ document.addEventListener("DOMContentLoaded", function(){
       oldScore.parentElement.removeChild(oldScore);
     }
     var scoreHeader = document.createElement("h2");
+    scoreHeader.className = "score-header";
     var newScore = score + 1;
     scoreHeader.innerHTML = "Score: " + score;
     document.body.appendChild(scoreHeader);
