@@ -80,7 +80,15 @@ document.addEventListener("DOMContentLoaded", function(){
     "rabbit1",
     "rabbit2",
     "horse1",
-    "horse2"
+    "horse2",
+    "elephant1",
+    "elephant2",
+    "leopard1",
+    "leopard2",
+    "giraffe1",
+    "giraffe2",
+    "owl1",
+    "owl2"
   ];
 
   setUp();
@@ -293,7 +301,7 @@ document.addEventListener("DOMContentLoaded", function(){
     makeHeader(score);
     header.innerHTML = "YOU WON!";
     doneScreen.className = "won";
-    if (score == 5){
+    if (score == 3){
       bonusWon();
     }
     else {
